@@ -1,7 +1,6 @@
 "use client";
 
-
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { fetchGenres } from "../utils/fetchMovies";
 import MoviesCard from "../components/MovieCards"
@@ -9,7 +8,7 @@ import { Movie } from "../components/MovieCards";
 import {Genre} from "../components/GenresList";
 
 
-const CategoryPage = () => {
+const CategoryPageInner = () => {
   const searchParams = useSearchParams();
   const genreId = searchParams.get("genre");
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -56,6 +55,12 @@ const CategoryPage = () => {
       )}
     </div>
   );
-};
+}
 
-export default CategoryPage;
+export default function CategoryPage(){
+  return (
+    <Suspense fallback = {<div className="text-gray-200"></div>}>
+      <CategoryPageInner/>
+    </Suspense>
+  )
+}

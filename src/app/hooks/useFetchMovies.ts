@@ -11,11 +11,11 @@ export function useFetchMovies(query?: string) {
     setError("");
     const fetchData = async () => {
       try {
-        const rawData = query
+        const rawData : Movie[]= query
           ? await searchMovies(query)
           : await fetchLatestMovies();
-        const sanitizedData : Movie[]= (rawData || []).map((movie):Movie => {
-          const releaseDate = new Date(movie.releaseDate);
+        const sanitizedData : Movie[]= rawData.map((movie):Movie => {
+          const releaseDate = new Date(movie.releaseDate ?? "");
           return {
             ...movie,
             releaseDate: isNaN(releaseDate.getTime())

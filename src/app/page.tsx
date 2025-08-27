@@ -10,8 +10,13 @@ export default function HomePage() {
   const [searchTerm, setSearchTerm] = useState("");
   const { movies, loading, error } = useFetchMovies(searchTerm);
 
-  const sortedMovies = movies.sort(
-  (a, b) => new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime()
+  const sortedMovies = movies.sort((a,b)=>{
+       const firstDate = new Date(a.releaseDate ?? "").getTime();
+       const lastDate = new Date(b.releaseDate ?? "").getTime();
+
+       return lastDate - firstDate;
+  }
+  
 );
 
 

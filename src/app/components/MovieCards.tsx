@@ -5,7 +5,7 @@ export interface Movie {
   id: number;
   title: string;
   poster_path?: string | null;
-  releaseDate?: string;
+  releaseDate?: string | null ;
 }
 
 interface MoviesCardProps {
