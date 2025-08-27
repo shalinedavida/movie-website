@@ -1,10 +1,11 @@
 
 import React from 'react'
+import Background from '../components/Background'
 
 const SignIn = () => {
   return (
     <>
-   
+    <Background />
     <div className='relative z-10 min-h-screen flex items-center justify-center px-4'>
      <div className=" flex items-center justify-center ">
       <div className="w-full bg-black p-8 rounded-lg shadow-md">
@@ -57,7 +58,7 @@ const SignIn = () => {
           </button>
           <p className="mt-4 text-m text-gray-600">
             Already have an account?{' '}
-            <a href="/login" className="text-purple-500 hover:underline cursor-pointer ">
+            <a href="/page" className="text-purple-500 hover:underline cursor-pointer ">
               Log in
             </a>
           </p>
